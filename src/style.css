@@ -1,0 +1,365 @@
+.input-group button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.input-group button:hover {
+    background-color: #0056b3;
+}
+
+.shopping-list {
+    list-style: none;
+    padding: 0;
+}
+
+.shopping-list li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.shopping-list button {
+    padding: 5px 10px;
+    border: none;
+    background-color: #dc3545;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.shopping-list button:hover {
+    background-color: #c82333;
+}
+.input-group button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.input-group button:hover {
+    background-color: #0056b3;
+}
+
+.shopping-list {
+    list-style: none;
+    padding: 0;
+}
+
+.shopping-list li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.shopping-list button {
+    padding: 5px 10px;
+    border: none;
+    background-color: #dc3545;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.shopping-list button:hover {
+    background-color: #c82333;
+}
+.budget-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.input-group input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.input-group button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #28a745;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.input-group button:hover {
+    background-color: #218838;
+}
+
+.budget-list {
+    list-style: none;
+    padding: 0;
+}
+
+.budget-list li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.error-message {
+    color: red;
+}
+.price-comparison-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.input-group input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.input-group button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #28a745;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.input-group button:hover {
+    background-color: #218838;
+}
+
+.price-list {
+    list-style: none;
+    padding: 0;
+}
+
+.price-list li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.error-message {
+    color: red;
+}
+.recipe-suggestions-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.input-group input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.input-group button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.input-group button:hover {
+    background-color: #0056b3;
+}
+
+.recipe-list {
+    list-style: none;
+    padding: 0;
+}
+
+.recipe-list li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.recipe-list a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.recipe-list a:hover {
+    text-decoration: underline;
+}
+
+.error-message {
+    color: red;
+}
+.inventory-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.input-group input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.input-group button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.input-group button:hover {
+    background-color: #0056b3;
+}
+
+.inventory-list {
+    list-style: none;
+    padding: 0;
+}
+
+.inventory-list li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.inventory-list button {
+    padding: 5px 10px;
+    border: none;
+    background-color: #dc3545;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.inventory-list button:hover {
+    background-color: #c82333;
+}
+.home-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.section-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.section-buttons button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.section-buttons button:hover {
+    background-color: #0056b3;
+}
+
+.shopping-list-container,
+.recipe-container,
+.inventory-container,
+.budget-container,
+.price-comparison-container {
+    margin: 20px 0;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #332b2b;
+    color: white;
+    padding: 10px 20px;
+}
+
+.navbar-logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    max-width: 100px; /* Adjust the size of the logo */
+    /*margin-right: 60px; !* Optional: Adjust spacing *!*/
+}
+
+.navbar-links {
+    list-style-type: none;
+    display: flex;
+    gap: 20px;
+}
+
+.navbar-links li {
+    font-size: 16px;
+}
+
+.navbar-links li a {
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s ease;
+}
+
+.navbar-links li a:hover {
+    color: #ffc107; /* Example color change on hover */
+}

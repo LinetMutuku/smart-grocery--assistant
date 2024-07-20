@@ -27,7 +27,6 @@ const App = () => {
                     <Route path="*" element={
                         <div>
                             <h2>Welcome to Smart Grocery Assistant</h2>
-                            <p>Select a section from the navigation bar to get started.</p>
                         </div>
                     } />
                 </Routes>

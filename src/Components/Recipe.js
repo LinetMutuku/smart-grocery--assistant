@@ -1,53 +1,63 @@
-import React, { useState, useEffect } from 'react';
-import { db } from '../firebaseConfig';
-import { collection, getDocs, addDoc } from 'firebase/firestore';
-import toast from 'react-hot-toast'; // Import react-hot-toast for notifications
+// Recipe.js
+import React, { useState } from 'react';
+import axios from 'axios';
+import '../style.css';
+
+const APP_ID = process.env.REACT_APP_APP_ID;
+const APP_KEY = process.env.REACT_APP_APP_KEY;
+const API_URL = process.env.REACT_APP_API_URL;
 
 const Recipe = () => {
+    const [searchTerm, setSearchTerm] = useState('');
     const [recipes, setRecipes] = useState([]);
-    const [newRecipe, setNewRecipe] = useState({ title: '', ingredients: '' });
+    const [loading, setLoading] = useState(false);
 
-    useEffect(() => {
-        const fetchRecipes = async () => {
-            const recipesCollection = await getDocs(collection(db, 'recipes'));
-            setRecipes(recipesCollection.docs.map(doc => ({ ...doc.data(), id: doc.id })));
-        };
-        fetchRecipes();
-    }, []);
-
-    const addRecipe = async () => {
-        await addDoc(collection(db, 'recipes'), newRecipe);
-        setRecipes([...recipes, newRecipe]);
-        setNewRecipe({ title: '', ingredients: '' });
-        toast.success('Recipe added successfully'); // Notify success with toast
+    const searchRecipes = async (e) => {
+        e.preventDefault();
+        setLoading(true);
+        try {
+            const response = await axios.get(`${API_URL}/search?q=${searchTerm}&app_id=${APP_ID}&app_key=${APP_KEY}`);
+            setRecipes(response.data.hits);
+        } catch (error) {
+            console.error('Error fetching recipes:', error);
+            alert('Failed to fetch recipes. Please try again.');
+        }
+        setLoading(false);
     };
 
     return (
         <div className="recipe-container">
-            <h2>Recipe Suggestions</h2>
-            <div className="input-group">
+            <h1>Recipe Search</h1>
+            <form onSubmit={searchRecipes} className="search-form">
                 <input
                     type="text"
-                    value={newRecipe.title}
-                    onChange={(e) => setNewRecipe({ ...newRecipe, title: e.target.value })}
-                    placeholder="Recipe Title"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    placeholder="Enter a dish or ingredient"
+                    className="search-input"
                 />
-                <input
-                    type="text"
-                    value={newRecipe.ingredients}
-                    onChange={(e) => setNewRecipe({ ...newRecipe, ingredients: e.target.value })}
-                    placeholder="Ingredients (comma separated)"
-                />
-                <button onClick={addRecipe}>Add Recipe</button>
-            </div>
-            <ul className="recipe-list">
-                {recipes.map(recipe => (
-                    <li key={recipe.id}>
-                        <h3>{recipe.title}</h3>
-                        <p>{recipe.ingredients}</p>
-                    </li>
+                <button type="submit" className="search-button">Search</button>
+            </form>
+
+            {loading && <p>Loading...</p>}
+
+            <div className="recipes-grid">
+                {recipes.map((hit, index) => (
+                    <div key={index} className="recipe-card">
+                        <img src={hit.recipe.image} alt={hit.recipe.label} className="recipe-image"/>
+                        <h2>{hit.recipe.label}</h2>
+                        <p>Source: {hit.recipe.source}</p>
+                        <ul className="ingredient-list">
+                            {hit.recipe.ingredientLines.map((ingredient, i) => (
+                                <li key={i}>{ingredient}</li>
+                            ))}
+                        </ul>
+                        <a href={hit.recipe.url} target="_blank" rel="noopener noreferrer" className="recipe-link">
+                            View Full Recipe
+                        </a>
+                    </div>
                 ))}
-            </ul>
+            </div>
         </div>
     );
 };

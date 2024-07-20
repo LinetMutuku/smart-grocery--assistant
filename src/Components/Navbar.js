@@ -8,7 +8,7 @@ const Navbar = () => {
             <div className="navbar-container">
                 <div className="navbar-logo">
                     <img src="/grocery-logo.jpg" alt="Grocery Store Logo" className="logo-img" />
-                    <h1 className="store-name">GRAB GROCERY STORE</h1>
+                    <h1 className="store-name">SMART GROCERY ASSISTANT</h1>
                 </div>
                 <ul className="navbar-links">
                     <li className="nav-item"><Link to="/shopping-list" className="nav-link">Shopping List</Link></li>

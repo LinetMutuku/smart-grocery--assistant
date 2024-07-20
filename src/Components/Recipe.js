@@ -1,28 +1,63 @@
-// Recipe.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { toast } from 'react-hot-toast';
 import '../style.css';
 
-const APP_ID = process.env.REACT_APP_APP_ID;
-const APP_KEY = process.env.REACT_APP_APP_KEY;
-const API_URL = process.env.REACT_APP_API_URL;
+// Log environment variables (be cautious about logging sensitive information)
+console.log('APP_ID:', process.env.REACT_APP_APP_ID);
+console.log('APP_KEY:', process.env.REACT_APP_APP_KEY);
 
 const Recipe = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [recipes, setRecipes] = useState([]);
     const [loading, setLoading] = useState(false);
 
+    useEffect(() => {
+        // Verify environment variables are loaded
+        if (!process.env.REACT_APP_APP_ID || !process.env.REACT_APP_APP_KEY) {
+            console.error('Environment variables are not set correctly');
+            toast.error('API configuration error. Please check the console.');
+        }
+    }, []);
+
     const searchRecipes = async (e) => {
         e.preventDefault();
         setLoading(true);
         try {
-            const response = await axios.get(`${API_URL}/search?q=${searchTerm}&app_id=${APP_ID}&app_key=${APP_KEY}`);
+            console.log('Sending request with params:', {
+                type: 'public',
+                q: searchTerm,
+                app_id: process.env.REACT_APP_APP_ID,
+                app_key: process.env.REACT_APP_APP_KEY
+            });
+
+            const response = await axios.get('https://api.edamam.com/api/recipes/v2', {
+                params: {
+                    type: 'public',
+                    q: searchTerm,
+                    app_id: process.env.REACT_APP_APP_ID,
+                    app_key: process.env.REACT_APP_APP_KEY
+                }
+            });
+
+            console.log('Response:', response.data);
             setRecipes(response.data.hits);
+            toast.success('Recipes fetched successfully!');
         } catch (error) {
             console.error('Error fetching recipes:', error);
-            alert('Failed to fetch recipes. Please try again.');
+            if (error.response) {
+                console.error('Response data:', error.response.data);
+                console.error('Response status:', error.response.status);
+                console.error('Response headers:', error.response.headers);
+            } else if (error.request) {
+                console.error('Request:', error.request);
+            } else {
+                console.error('Error message:', error.message);
+            }
+            toast.error(`Failed to fetch recipes: ${error.message}`);
+        } finally {
+            setLoading(false);
         }
-        setLoading(false);
     };
 
     return (
@@ -36,7 +71,9 @@ const Recipe = () => {
                     placeholder="Enter a dish or ingredient"
                     className="search-input"
                 />
-                <button type="submit" className="search-button">Search</button>
+                <button type="submit" className="search-button" disabled={loading}>
+                    {loading ? 'Searching...' : 'Search'}
+                </button>
             </form>
 
             {loading && <p>Loading...</p>}

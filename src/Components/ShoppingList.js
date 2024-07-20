@@ -16,7 +16,6 @@ const ShoppingList = () => {
     const [newItem, setNewItem] = useState({ name: '', quantity: '', category: '', image: null, price: '' });
     const [editingItem, setEditingItem] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [ error, setError] = useState(null);
     const [imagePreview, setImagePreview] = useState(null);
     const [searchTerm, setSearchTerm] = useState('');
     const [sortCriteria, setSortCriteria] = useState('name');
@@ -43,7 +42,6 @@ const ShoppingList = () => {
             setLoading(false);
         }, (error) => {
             console.error("Error fetching items:", error);
-            setError('Failed to fetch items');
             setLoading(false);
         });
 

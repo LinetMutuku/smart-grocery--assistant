@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { auth } from '../firebaseConfig';
 import { signInWithEmailAndPassword } from 'firebase/auth';
+import { useAuth } from '../context/AuthContext';
 import toast from 'react-hot-toast';
 import '../style.css';
 
@@ -10,17 +11,23 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
     const navigate = useNavigate();
+    const { setUser } = useAuth();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setError(null);
         try {
-            await signInWithEmailAndPassword(auth, email, password);
+            const userCredential = await signInWithEmailAndPassword(auth, email, password);
+            setUser(userCredential.user);
             toast.success('Logged in successfully!');
-            navigate('/');
+            navigate('/shopping-list');
         } catch (err) {
-            console.error('Login error:', err);
-            setError('Failed to log in');
-            toast.error('Failed to log in');
+            console.error('Login error:', err.code, err.message);
+            const errorMessage = err.code === 'auth/invalid-credential'
+                ? 'Invalid email or password. Please try again.'
+                : err.message || 'Failed to log in';
+            setError(errorMessage);
+            toast.error(errorMessage);
         }
     };
 
@@ -45,6 +52,7 @@ const Login = () => {
                 />
                 <button type="submit">Login</button>
             </form>
+            <p>Don't have an account? <Link to="/signup">Sign up</Link></p>
         </div>
     );
 };

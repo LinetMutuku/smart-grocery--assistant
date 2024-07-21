@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { auth, db } from '../firebaseConfig';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { ref, set } from 'firebase/database';
@@ -14,11 +14,11 @@ const SignUp = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setError(null);
         try {
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
             const user = userCredential.user;
 
-            // Add user details to the Realtime Database
             await set(ref(db, 'users/' + user.uid), {
                 email: user.email,
             });
@@ -26,9 +26,12 @@ const SignUp = () => {
             toast.success('Account created successfully!');
             navigate('/login');
         } catch (err) {
-            console.error('Signup error:', err);
-            setError('Failed to create an account');
-            toast.error('Failed to create an account');
+            console.error('Signup error:', err.code, err.message);
+            const errorMessage = err.code === 'auth/email-already-in-use'
+                ? 'Email already in use. Please use a different email.'
+                : err.message || 'Failed to create an account';
+            setError(errorMessage);
+            toast.error(errorMessage);
         }
     };
 
@@ -50,9 +53,11 @@ const SignUp = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Password"
                     required
+                    minLength="6"
                 />
                 <button type="submit">Sign Up</button>
             </form>
+            <p>Already have an account? <Link to="/login">Log in</Link></p>
         </div>
     );
 };

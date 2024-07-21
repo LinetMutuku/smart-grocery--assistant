@@ -20,7 +20,6 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "heroku-postbuild": "npm run build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -42,22 +41,8 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "@babel/plugin-transform-private-property-in-object": "^7.22.0",
-    "@testing-library/jest-dom": "^6.4.6",
-    "@testing-library/react": "^16.0.0",
-    "@testing-library/user-event": "^14.5.2"
-  },
   "engines": {
     "node": "20.x",
     "npm": "10.x"
-  },
-  "babel": {
-    "presets": [
-      "react-app"
-    ],
-    "plugins": [
-      "@babel/plugin-transform-private-property-in-object"
-    ]
   }
 }

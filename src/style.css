@@ -95,7 +95,7 @@
 }
 
 .signup-container h2 {
-    color: #4a90e2;
+    color: #328f8c;
     text-align: center;
     margin-bottom: 1.5rem;
 }
@@ -107,6 +107,7 @@
 
 .signup-container input {
     margin-bottom: 1rem;
+    background-color: white;
     padding: 0.75rem;
     border: 1px solid #dddfe2;
     border-radius: 4px;
@@ -115,12 +116,12 @@
 
 .signup-container input:focus {
     outline: none;
-    border-color: #4a90e2;
+    border-color: #e7e5e5;
     box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
 }
 
 .signup-container button {
-    background-color: #4a90e2;
+    background-color: #1d6461;
     color: #ffffff;
     border: none;
     border-radius: 4px;
@@ -132,7 +133,7 @@
 }
 
 .signup-container button:hover {
-    background-color: #3a7bc8;
+    background-color: #dddede;
 }
 
 .signup-container .error-message {
@@ -147,7 +148,7 @@
 }
 
 .signup-container a {
-    color: #4a90e2;
+    color: #1d6461;
     text-decoration: none;
     font-weight: bold;
 }
@@ -168,7 +169,7 @@
 }
 
 .login-container h2 {
-    color: #2ecc71;
+    color: #1e7c74;
     text-align: center;
     margin-bottom: 1.5rem;
 }
@@ -188,12 +189,12 @@
 
 .login-container input:focus {
     outline: none;
-    border-color: #2ecc71;
+    border-color: #dddede;
     box-shadow: 0 0 0 2px rgba(46, 204, 113, 0.2);
 }
 
 .login-container button {
-    background-color: #2ecc71;
+    /*background-color: #1d6461;*/
     color: #ffffff;
     border: none;
     border-radius: 4px;
@@ -205,7 +206,7 @@
 }
 
 .login-container button:hover {
-    background-color: #27ae60;
+    background-color: #dddede;
 }
 
 .login-container .error-message {
@@ -220,13 +221,37 @@
 }
 
 .login-container a {
-    color: #2ecc71;
+    color: #1e7c74;
     text-decoration: none;
     font-weight: bold;
 }
 
 .login-container a:hover {
     text-decoration: underline;
+}
+
+.google-signin-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #dddede;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.google-signin-button:hover {
+    background-color: #e7e5e5;
+}
+
+.google-logo {
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
 }
 .inventory-container {
     max-width: 1200px;
@@ -1119,15 +1144,45 @@ h2 {
 }
 
 .input-group button[type="button"] {
-    background-color: #1d6461;
+    background-color: #d2d5d5;
 }
 
 .input-group button[type="button"]:hover {
-    background-color: #1d6461;
+    background-color: #dddede;
 }
 
 @media (max-width: 600px) {
     .price-item button {
         margin-top: 5px;
     }
+}
+.password-input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-input-container input {
+    flex-grow: 1;
+    padding-right: 30px; /* Make space for the button */
+}
+
+.toggle-password {
+    position: absolute;
+    right: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 0.8em; /* Reduce the font size */
+    color: #777; /* Light gray color */
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+}
+
+.toggle-password:focus {
+    outline: none;
 }

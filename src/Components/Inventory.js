@@ -70,7 +70,7 @@ const Inventory = () => {
     };
 
     const markItemAsAddedToInventory = async (id) => {
-        const itemRef = ref(db, `shoppingList/${id}`);
+        const itemRef = ref(db, `shoppinglist/${id}`);
         await update(itemRef, { addedToInventory: true });
     };
 
